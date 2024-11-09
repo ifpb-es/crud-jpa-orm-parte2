@@ -1,15 +1,18 @@
 package br.edu.ifpb.es.daw;
 
 import br.edu.ifpb.es.daw.dao.NewsICDAO;
+import br.edu.ifpb.es.daw.dao.impl.NewsICDAOImpl;
 import br.edu.ifpb.es.daw.entities.idclass.NewsIC;
 import br.edu.ifpb.es.daw.entities.idclass.NewsIdIC;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 
 public class MainNewsICSave {
 
 	public static void main(String[] args) throws DawException {
-		NewsICDAO dao = new NewsICDAO();
-		try {
+		try(EntityManagerFactory emf = Persistence.createEntityManagerFactory("daw")) {
+			NewsICDAO dao = new NewsICDAOImpl(emf);
 			NewsIC newsIC = new NewsIC();
 			
 			NewsIdIC id = new NewsIdIC();
@@ -24,8 +27,6 @@ public class MainNewsICSave {
 			dao.save(newsIC);
 
 			System.out.println(newsIC);
-		} finally {
-			dao.close();
 		}
 	}
 

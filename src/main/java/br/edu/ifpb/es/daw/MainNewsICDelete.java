@@ -1,14 +1,17 @@
 package br.edu.ifpb.es.daw;
 
 import br.edu.ifpb.es.daw.dao.NewsICDAO;
+import br.edu.ifpb.es.daw.dao.impl.NewsICDAOImpl;
 import br.edu.ifpb.es.daw.entities.idclass.NewsIC;
 import br.edu.ifpb.es.daw.entities.idclass.NewsIdIC;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 public class MainNewsICDelete {
 
 	public static void main(String[] args) throws DawException {
-		NewsICDAO dao = new NewsICDAO();
-		try {
+		try(EntityManagerFactory emf = Persistence.createEntityManagerFactory("daw")) {
+			NewsICDAO dao = new NewsICDAOImpl(emf);
 			// Primeiro salvar
 			NewsIC newsIC = new NewsIC();
 
@@ -28,8 +31,6 @@ public class MainNewsICDelete {
 			dao.delete(newsIC);
 
 			System.out.println(dao.getAll().size());
-		} finally {
-			dao.close();
 		}
 	}
 

@@ -6,19 +6,14 @@ import jakarta.persistence.Persistence;
 
 public abstract class DAO {
 
-	static EntityManagerFactory emf;
-	
-	static {
-		emf = Persistence.createEntityManagerFactory("daw");
+	private EntityManagerFactory emf;
+
+	public DAO(EntityManagerFactory emf) {
+		this.emf = emf;
 	}
-	
+
 	protected EntityManager getEntityManager() {
 		return emf.createEntityManager();
 	}
-	
-	public void close() {
-		if (emf.isOpen()) {
-			emf.close();
-		}
-	}
+
 }

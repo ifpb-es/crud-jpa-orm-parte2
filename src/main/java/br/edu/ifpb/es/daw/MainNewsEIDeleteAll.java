@@ -15,7 +15,7 @@ public class MainNewsEIDeleteAll {
 			NewsEIDAO dao = new NewsEIDAOImpl(emf);
 			List<NewsEI> newsEIs = dao.getAll();
 			for (NewsEI newsEI : newsEIs) {
-				dao.delete(newsEI);
+				dao.delete(newsEI.getId());
 			}
 		}
 	}

@@ -1,19 +1,16 @@
 package br.edu.ifpb.es.daw.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
+import java.util.List;
 
-public abstract class DAO {
+public interface DAO<E, T> {
 
-	private EntityManagerFactory emf;
+    void save(E obj) throws PersistenciaDawException;
 
-	public DAO(EntityManagerFactory emf) {
-		this.emf = emf;
-	}
+    E update(E obj) throws PersistenciaDawException;
 
-	protected EntityManager getEntityManager() {
-		return emf.createEntityManager();
-	}
+    void delete(T primaryKey) throws PersistenciaDawException;
 
+    E getByID(T primaryKey) throws PersistenciaDawException;
+
+    List<E> getAll() throws PersistenciaDawException;
 }

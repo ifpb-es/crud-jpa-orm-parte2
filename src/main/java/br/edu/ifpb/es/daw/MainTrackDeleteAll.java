@@ -15,7 +15,7 @@ public class MainTrackDeleteAll {
 			TrackDAO dao = new TrackDAOImpl(emf);
 			List<Track> tracks = dao.getAll();
 			for (Track track : tracks) {
-				dao.delete(track);
+				dao.delete(track.getId());
 			}
 		}
 	}

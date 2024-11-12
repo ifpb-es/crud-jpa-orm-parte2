@@ -27,7 +27,7 @@ public class MainTrackDelete {
 
 			// Depois apagar
 
-			dao.delete(track);
+			dao.delete(track.getId());
 
 			System.out.println(dao.getAll().size());
 		}

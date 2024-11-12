@@ -15,11 +15,11 @@ public class MainNewsICDelete {
 			// Primeiro salvar
 			NewsIC newsIC = new NewsIC();
 
-			NewsIdIC id = new NewsIdIC();
-			id.setLanguage("pt_BR");
-			id.setTitle("title " + System.currentTimeMillis());
-			newsIC.setLanguage(id.getLanguage());
-			newsIC.setTitle(id.getTitle());
+			NewsIdIC primaryKey = new NewsIdIC();
+			primaryKey.setLanguage("pt_BR");
+			primaryKey.setTitle("title " + System.currentTimeMillis());
+			newsIC.setLanguage(primaryKey.getLanguage());
+			newsIC.setTitle(primaryKey.getTitle());
 			newsIC.setContent("content");
 
 			dao.save(newsIC);
@@ -28,7 +28,7 @@ public class MainNewsICDelete {
 
 			// Depois apagar
 
-			dao.delete(newsIC);
+			dao.delete(primaryKey);
 
 			System.out.println(dao.getAll().size());
 		}

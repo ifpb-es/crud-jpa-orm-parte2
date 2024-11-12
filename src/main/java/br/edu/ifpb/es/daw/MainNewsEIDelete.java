@@ -27,7 +27,7 @@ public class MainNewsEIDelete {
 
 			// Depois apagar
 
-			dao.delete(newsEI);
+			dao.delete(newsEI.getId());
 
 			System.out.println(dao.getAll().size());
 		}

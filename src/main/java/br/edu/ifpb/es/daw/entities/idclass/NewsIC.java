@@ -7,7 +7,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @IdClass(NewsIdIC.class)
-@Table(name = "TB_NEWS")
+@Table(name = "NEWS")
 public class NewsIC {
 
 	@Id

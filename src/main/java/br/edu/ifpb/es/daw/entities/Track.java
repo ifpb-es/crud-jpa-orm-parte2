@@ -14,7 +14,7 @@ import jakarta.persistence.Lob;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "TB_TRACK")
+@Table(name = "TRACKS")
 public class Track {
 
 	@Id
